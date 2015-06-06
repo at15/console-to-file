@@ -6,8 +6,20 @@
       "cmd":"scalac -Xshow-phases"
     },
     {
-      "name":"compile scala file",
+      "name":"warn dead code if.scala",
       "cmd":"scalac -Ywarn-dead-code if.scala"
+    },
+    {
+      "name":"print all phases",
+      "cmd":"scalac -Xprint:all if.scala"
+    },
+    {
+      "name":"abstract method",
+      "cmd":"scalac -Xprint:all param.scala"
+    },
+    {
+      "name":"refcheck",
+      "cmd":"scalac -Xprint:all refchecks.scala"
     }
   ]
 }

@@ -7,4 +7,13 @@ object Cat {
         return 3
         2
     }
+
+    def doYou2 : Int = {
+        val x = 2
+        if(x>1){
+            1
+        }
+        return 3
+        2
+    }
 }

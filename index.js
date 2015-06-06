@@ -18,18 +18,18 @@ for (var i = 0; i < config.cmds.length; i++) {
                 return;
             }
             console.log('successfully executed ' + cmd);
-            //if(stdout){
-            //    fs.writeFileSync(name + '.log', stdout);
-            //}
+
             var fileName = name.replace(/\s/g, "_");
+            if(stdout){
+                fs.writeFileSync(fileName + '.log', stdout);
+            }else{
+                console.log('no log');
+            }
             if (stderr) {
                 fs.writeFileSync(fileName + '.err', stderr);
             } else {
                 console.log('no error');
             }
-            //if(!stdout && !stderr){
-            //    console.warn('no log for ' + name);
-            //}
         });
     })(cmd, name);
 }
