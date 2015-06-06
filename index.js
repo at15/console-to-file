@@ -21,9 +21,10 @@ for (var i = 0; i < config.cmds.length; i++) {
             //if(stdout){
             //    fs.writeFileSync(name + '.log', stdout);
             //}
+            var fileName = name.replace(/\s/g, "_");
             if (stderr) {
-                fs.writeFileSync(name + '.err', stderr);
-            }else{
+                fs.writeFileSync(fileName + '.err', stderr);
+            } else {
                 console.log('no error');
             }
             //if(!stdout && !stderr){
