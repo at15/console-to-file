@@ -1,0 +1,13 @@
+{
+  "name":"I am just a name",
+  "cmds" : [
+    {
+      "name":"show scala phases",
+      "cmd":"scalac -Xshow-phases"
+    },
+    {
+      "name":"compile scala file",
+      "cmd":"scalac if.scala"
+    }
+  ]
+}

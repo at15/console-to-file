@@ -3,17 +3,30 @@
  */
 var exec = require('child_process').exec;
 var fs = require('fs');
-var cmd = "scalac -Xshow-phases";
-exec(cmd,function(err,stdout,stderr){
-    if(err){
-        console.log('got error when executing: '+ cmd);
-        console.log(err);
-        return;
-    }
-    console.log('successfully executed ' + cmd);
-    fs.writeFileSync('phases.log',stdout);
-    if(stderr){
-        fs.writeFileSync('phases.err',stderr);
-    }
 
-});
+// read config
+var config = JSON.parse(fs.readFileSync("cmds.json"));
+console.log('running cmds for ' + config.name);
+for (var i = 0; i < config.cmds.length; i++) {
+    var name = config.cmds[i].name;
+    var cmd = config.cmds[i].cmd;
+    (function (cmd, name) {
+        exec(cmd, function (err, stdout, stderr) {
+            if (err) {
+                console.log('got error when executing: ' + cmd);
+                console.log(err);
+                return;
+            }
+            console.log('successfully executed ' + cmd);
+            if(stdout){
+                fs.writeFileSync(name + '.log', stdout);
+            }
+            if (stderr) {
+                fs.writeFileSync(name + '.err', stderr);
+            }
+            if(!stdout && !stderr){
+                console.warn('no log for ' + name);
+            }
+        });
+    })(cmd, name);
+}
