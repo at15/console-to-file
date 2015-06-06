@@ -18,15 +18,17 @@ for (var i = 0; i < config.cmds.length; i++) {
                 return;
             }
             console.log('successfully executed ' + cmd);
-            if(stdout){
-                fs.writeFileSync(name + '.log', stdout);
-            }
+            //if(stdout){
+            //    fs.writeFileSync(name + '.log', stdout);
+            //}
             if (stderr) {
                 fs.writeFileSync(name + '.err', stderr);
+            }else{
+                console.log('no error');
             }
-            if(!stdout && !stderr){
-                console.warn('no log for ' + name);
-            }
+            //if(!stdout && !stderr){
+            //    console.warn('no log for ' + name);
+            //}
         });
     })(cmd, name);
 }

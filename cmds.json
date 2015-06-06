@@ -7,7 +7,7 @@
     },
     {
       "name":"compile scala file",
-      "cmd":"scalac if.scala"
+      "cmd":"scalac -Ywarn-dead-code if.scala"
     }
   ]
 }
